@@ -9,6 +9,7 @@ require 'rspec/rails'
 require 'capybara'
 require 'capybara/dsl'
 require 'selenium-webdriver'
+require 'webmock/rspec'
 
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app,
@@ -45,6 +46,15 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.include FactoryBot::Syntax::Methods
+
+  config.before do
+    WebMock.disable_net_connect!(allow_localhost: true)
+  end
+
+  # config.after :suite do
+  #   WebMock.disable!
+  # end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
