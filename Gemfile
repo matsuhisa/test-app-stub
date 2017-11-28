@@ -14,10 +14,19 @@ gem 'coffee-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 
+gem 'haml'
+gem 'haml-rails'
+gem 'erb2haml'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
   gem 'selenium-webdriver'
+
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing', require: false
+  gem 'webmock'
 end
 
 group :development do
@@ -25,6 +34,9 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "pry-byebug"
+  gem "pry-doc", require: false
+  gem "pry-rails"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
