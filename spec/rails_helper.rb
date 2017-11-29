@@ -10,6 +10,13 @@ require 'capybara'
 require 'capybara/dsl'
 require 'selenium-webdriver'
 require 'webmock/rspec'
+require 'vcr'
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/vcr'
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+end
 
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app,

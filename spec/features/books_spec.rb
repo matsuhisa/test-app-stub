@@ -8,10 +8,10 @@ RSpec.feature 'books', type: :feature do
     end
   end
 
-  context "WebMock" do
-    background do
-      stub_request(:get, "/books").to_return(status: 404, body: "AAA")
-    end
+  context "WebMock", vcr: true do
+    # background do
+    #   stub_request(:get, "/books").to_return(status: 404, body: "AAA")
+    # end
 
     scenario '' do
       puts "---------"
