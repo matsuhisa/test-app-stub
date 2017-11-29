@@ -8,6 +8,25 @@ RSpec.feature 'books', type: :feature do
     end
   end
 
+  context "WebMock" do
+    background do
+      stub_request(:get, "/books").to_return(status: 404, body: "AAA")
+    end
+
+    scenario '' do
+      puts "---------"
+      puts Net::HTTP.get("/books", "/")
+      puts Net::HTTP.get_response("/books", "/").code
+      puts "---------"
+
+      puts "---------"
+      visit books_path
+      puts page.current_path
+      expect(page).to have_http_status(200)
+      puts "---------"
+    end
+  end
+
   context '#show' do
     let(:book) { create(:book) }
 
