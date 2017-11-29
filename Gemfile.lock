@@ -224,6 +224,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
+    vcr (3.0.3)
     web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -268,6 +269,7 @@ DEPENDENCIES
   turbolinks
   tzinfo-data
   uglifier
+  vcr
   web-console (>= 3.3.0)
   webmock
 
